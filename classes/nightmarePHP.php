@@ -14,17 +14,41 @@ class nightmarePHP
     private $nodeCode;
     private $result;
 
+    private $raw;
+
     public function __construct()
     {
-
+        $this->raw = false;
     }
 
+
+    /**
+     * Prepares raw nightmareJS code.
+     * @param string $rawNightmareJS
+     * @return $this
+     */
     public function rawInput($rawNightmareJS)
     {
-        $this->nodeCode = $rawNightmareJS;
+        $this->raw = true;
+        $this->nodeCode = trim($rawNightmareJS);
         return $this;
     }
 
+
+    /**
+     * Mainly used for debugging
+     * @return string raw nightmareJS code
+     */
+    public function getCode()
+    {
+        return $this->nodeCode;
+    }
+    
+
+    /**
+     * Runs the code
+     * @return $this
+     */
     public function run()
     {
         //creating temp file and storing nightmareJS code in it
@@ -33,7 +57,7 @@ class nightmarePHP
         fwrite($temp, $this->nodeCode);
 
         //execution of code
-        exec("xvfb-run node ../example.js", $output);
+        exec("xvfb-run node " . $tempname, $output);
 
         //cleanup
         fclose($temp);
