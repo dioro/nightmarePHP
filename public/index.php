@@ -6,14 +6,6 @@ require_once '../vendor/autoload.php';
 
 
 
-
-
-//exec("cat " . $tempname, $output);
-
-
-
-
-
 $testing = new nightmarePHP();
 $testing->rawInput("
 const Nightmare = require(\"nightmare\");
@@ -34,6 +26,3 @@ dump($testing->getResult());
 
 //fseek($temp, 0);
 //dump(fread($temp, 1024));
-
-//
-//dump($output);
