@@ -22,18 +22,20 @@ require_once '../vendor/autoload.php';
 //});
 //")->run();
 
-$testing = new nightmarePHP();
+$nightmare = new nightmarePHP();
 
-$testing->config("show: false");
+$nightmare->config("show: false");
 
-$testing->_goto('https://www.reddit.com/r/news/')
-        ->wait('#siteTable > div:first-child .title > a')
-        ->evaluate("() => document.querySelector(\"#siteTable > div:first-child .title > a\").textContent")
-        ->end()
-        ->then("console.log")
-        ->_catch("(error) => {console.error('Search failed:', error);}")->run();
+$nightmare
+->_goto('http://www.telegraph.co.uk/science/')
+->wait('main article .list-of-entities__item-body-headline')
+->evaluate("() => document.querySelector(\"main article .list-of-entities__item-body-headline\").textContent")
+->end()
+->then("console.log")
+->_catch("(error) => {console.error('Search failed:', error);}")
+->run();
 
-dump($testing->getResult());
+dump($nightmare->getResult());
 
 
 
