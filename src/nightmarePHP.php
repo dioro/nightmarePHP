@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dioro
- * Date: 29/10/2017
- * Time: 16:59
- */
 
 namespace Rayac\nightmarePHP;
 
@@ -82,16 +76,22 @@ class nightmarePHP
         return $this;
     }
 
+
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+
     public function config($config)
     {
-        $this->raw = true;
-
         $this->nodeCode = "
-const Nightmare = require(\"nightmare\");
-const nightmare = Nightmare({". $config. " });
+        const Nightmare = require(\"nightmare\");
+        const nightmare = Nightmare({". $config. " });
         
-nightmare";
+        nightmare";
     }
+
 
     public function _goto($url)
     {
@@ -99,11 +99,13 @@ nightmare";
         return $this;
     }
 
+
     public function type($selector, $text = null)
     {
         $this->nodeCode .= "\n.type('".$selector."', '".$text."')";
         return $this;
     }
+
 
     public function wait($for)
     {
@@ -111,11 +113,13 @@ nightmare";
         return $this;
     }
 
+
     public function evaluate($evaluate)
     {
         $this->nodeCode .= "\n.evaluate(".$evaluate.")";
         return $this;
     }
+
 
     public function end($end = null)
     {
@@ -123,11 +127,13 @@ nightmare";
         return $this;
     }
 
+
     public function then($then)
     {
         $this->nodeCode .= "\n.then(".$then.")";
         return $this;
     }
+
 
     public function _catch($catch)
     {
@@ -135,11 +141,13 @@ nightmare";
         return $this;
     }
 
+
     public function click($selector)
     {
         $this->nodeCode .= "\n.click('".$selector."')";
         return $this;
     }
+
 
     public function back()
     {
@@ -147,11 +155,13 @@ nightmare";
         return $this;
     }
 
+
     public function forward()
     {
         $this->nodeCode .= "\n.forward()";
         return $this;
     }
+
 
     public function refresh()
     {
@@ -159,11 +169,13 @@ nightmare";
         return $this;
     }
 
+
     public function mousedown($selector)
     {
         $this->nodeCode .= "\n.mousedown('".$selector."')";
         return $this;
     }
+
 
     public function mouseup($selector)
     {
@@ -171,11 +183,13 @@ nightmare";
         return $this;
     }
 
+
     public function mouseover($selector)
     {
         $this->nodeCode .= "\n.mouseover('".$selector."')";
         return $this;
     }
+
 
     public function mouseout($selector)
     {
@@ -183,11 +197,13 @@ nightmare";
         return $this;
     }
 
+
     public function insert($selector, $text = null)
     {
         $this->nodeCode .= "\n.insert('".$selector.", ".$text."')";
         return $this;
     }
+
 
     public function check($selector)
     {
@@ -195,11 +211,13 @@ nightmare";
         return $this;
     }
 
+
     public function uncheck($selector)
     {
         $this->nodeCode .= "\n.uncheck('".$selector."')";
         return $this;
     }
+
 
     public function select($selector, $option)
     {
@@ -207,11 +225,13 @@ nightmare";
         return $this;
     }
 
+
     public function scrollTo($top, $left)
     {
         $this->nodeCode .= "\n.scrollTo('".$top.", ".$left."')";
         return $this;
     }
+
 
     public function viewport($width, $height)
     {
@@ -219,11 +239,13 @@ nightmare";
         return $this;
     }
 
+
     public function inject($type, $file)
     {
         $this->nodeCode .= "\n.inject('".$type.", ".$file."')";
         return $this;
     }
+
 
     public function header($header, $value)
     {
@@ -231,11 +253,13 @@ nightmare";
         return $this;
     }
 
+
     public function exists($selector)
     {
         $this->nodeCode .= "\n.exists('".$selector."')";
         return $this;
     }
+
 
     public function visible($selector)
     {
@@ -243,11 +267,13 @@ nightmare";
         return $this;
     }
 
+
     public function on($event, $callback)
     {
         $this->nodeCode .= "\n.on('".$event.", ".$callback."')";
         return $this;
     }
+
 
     public function once($event, $callback)
     {
@@ -255,11 +281,13 @@ nightmare";
         return $this;
     }
 
+
     public function removeListener($event, $callback)
     {
         $this->nodeCode .= "\n.removeListener('".$event.", ".$callback."')";
         return $this;
     }
+
 
     public function screenshot($path, $clip = null)
     {
@@ -267,11 +295,13 @@ nightmare";
         return $this;
     }
 
+
     public function html($path, $saveType)
     {
         $this->nodeCode .= "\n.html('".$path.", ".$saveType."')";
         return $this;
     }
+
 
     public function pdf($path, $options)
     {
@@ -279,11 +309,13 @@ nightmare";
         return $this;
     }
 
+
     public function title()
     {
         $this->nodeCode .= "\n.title()";
         return $this;
     }
+
 
     public function url()
     {
@@ -291,11 +323,13 @@ nightmare";
         return $this;
     }
 
+
     public function path()
     {
         $this->nodeCode .= "\n.path()";
         return $this;
     }
+
 
     public function cookiesGet($name = null)
     {
@@ -303,11 +337,13 @@ nightmare";
         return $this;
     }
 
+
     public function cookiesSet($cookie, $value = null)
     {
         $this->nodeCode .= "\n.cookies.set('".$cookie.", ".$value."')";
         return $this;
     }
+
 
     public function cookiesClear($name = null)
     {
@@ -315,24 +351,11 @@ nightmare";
         return $this;
     }
 
+
     public function cookiesClearAll()
     {
         $this->nodeCode .= "\n.cookies.clearAll()";
         return $this;
     }
 
-
-
-
-
-
-
-
-
-
-
-    public function getResult()
-    {
-        return $this->result;
-    }
 }

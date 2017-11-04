@@ -1,10 +1,14 @@
 {
+    "name": "shinoshi/nightmare-php",
+    "description": "PHP wrapper for nightmareJS",
+    "type": "library",
+    "license": "MIT",
     "require-dev": {
         "symfony/var-dumper": "^3.3"
     },
     "autoload": {
         "psr-4": {
-            "Rayac\\nightmarePHP\\": "classes/"
+            "Rayac\\nightmarePHP\\": "src/"
         }
     }
 }
