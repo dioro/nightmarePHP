@@ -1,6 +1,6 @@
 <?php
 
-namespace Rayac\nightmarePHP;
+namespace shinoshi\nightmarePHP;
 
 
 class nightmarePHP
