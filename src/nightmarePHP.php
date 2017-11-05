@@ -102,7 +102,8 @@ class nightmarePHP
 
     public function type($selector, $text = null)
     {
-        $this->nodeCode .= "\n.type('".$selector."', '".$text."')";
+        $text = isset($text) ? ", '" . $text . "'": "";
+        $this->nodeCode .= "\n.type('".$selector."'".$text.")";
         return $this;
     }
 
@@ -200,7 +201,8 @@ class nightmarePHP
 
     public function insert($selector, $text = null)
     {
-        $this->nodeCode .= "\n.insert('".$selector.", ".$text."')";
+        $text = isset($text) ? ", '" . $text . "'": "";
+        $this->nodeCode .= "\n.insert('".$selector."'".$text.")";
         return $this;
     }
 
@@ -291,7 +293,8 @@ class nightmarePHP
 
     public function screenshot($path, $clip = null)
     {
-        $this->nodeCode .= "\n.screenshot('".$path.", ".$clip."')";
+        $clip = isset($clip) ? ", '" . $clip . "'": "";
+        $this->nodeCode .= "\n.screenshot('".$path."'".$clip.")";
         return $this;
     }
 
@@ -333,21 +336,24 @@ class nightmarePHP
 
     public function cookiesGet($name = null)
     {
-        $this->nodeCode .= "\n.cookies.get('".$name."')";
+        $name = isset($name) ? "'" . $name . "'": "";
+        $this->nodeCode .= "\n.cookies.get(".$name.")";
         return $this;
     }
 
 
     public function cookiesSet($cookie, $value = null)
     {
-        $this->nodeCode .= "\n.cookies.set('".$cookie.", ".$value."')";
+        $value = isset($value) ? ", '" . $value . "'": "";
+        $this->nodeCode .= "\n.cookies.set('".$cookie. "'" .$value.")";
         return $this;
     }
 
 
     public function cookiesClear($name = null)
     {
-        $this->nodeCode .= "\n.cookies.clear('".$name."')";
+        $name = isset($name) ? "'" . $name . "'" : "";
+        $this->nodeCode .= "\n.cookies.clear(".$name.")";
         return $this;
     }
 

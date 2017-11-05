@@ -27,15 +27,22 @@ $nightmare = new nightmarePHP();
 $nightmare->config("show: false");
 
 $nightmare
-->_goto('http://www.telegraph.co.uk/science/')
-->wait('main article .list-of-entities__item-body-headline')
-->evaluate("() => document.querySelector(\"main article .list-of-entities__item-body-headline\").textContent")
-->end()
-->then("console.log")
-->_catch("(error) => {console.error('Search failed:', error);}")
-->run();
+    ->_goto('http://www.telegraph.co.uk/science/')
+    ->wait('main article .list-of-entities__item-body-headline')
+    ->evaluate("() => document.querySelector(\"main article .list-of-entities__item-body-headline\").textContent")
+    ->end()
+    ->then("console.log")
+    ->_catch("(error) => {console.error('Search failed:', error);}")
+    ->cookiesGet()
+    ->type("me")
+    ->cookiesClear()
+    ->screenshot("me" )
+    ->insert("mo")
+    ->cookiesSet("bsd");
+//->run();
 
 dump($nightmare->getResult());
+dump($nightmare->getCode());
 
 
 
