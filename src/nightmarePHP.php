@@ -10,13 +10,6 @@ class nightmarePHP
     private $nodeCode;
     private $result;
 
-    private $raw;
-
-    public function __construct()
-    {
-        $this->raw = false;
-    }
-
 
     /**
      * Prepares raw nightmareJS code.
@@ -25,7 +18,6 @@ class nightmarePHP
      */
     public function rawInput($rawNightmareJS)
     {
-        $this->raw = true;
         $this->nodeCode = trim($rawNightmareJS);
         return $this;
     }
@@ -37,9 +29,6 @@ class nightmarePHP
      */
     public function getCode()
     {
-        if($this->raw == true) {
-            $this->nodeCode .= ";";
-        }
         return trim($this->nodeCode);
     }
 
@@ -50,24 +39,20 @@ class nightmarePHP
      */
     public function run()
     {
-        if($this->raw == true) {
-            $this->nodeCode .= ";";
-        }
-
-        //creating temp file and storing nightmareJS code in it
+        // creating temp file and storing nightmareJS code in it
         $this->tempname = tempnam("../", "jej");
         $temp = fopen($this->tempname, "r+");
         fwrite($temp, $this->nodeCode);
 
-        //execution of code
+        // execution of code
         exec("xvfb-run node " . $this->tempname, $output);
 
-        //Used for debugging
-        //Dumps temp file contents that has nightmareJS
-        fseek($temp, 0);
-        dump(fread($temp, 1024));
+        // Used for debugging
+        // Dumps temp file contents that has nightmareJS
+        //fseek($temp, 0);
+        //dump(fread($temp, 1024));
 
-        //cleanup
+        // cleanup
         fclose($temp);
         unlink($this->tempname);
 
@@ -77,11 +62,17 @@ class nightmarePHP
     }
 
 
+    /**
+     * Returns result
+     * @return string
+     */
     public function getResult()
     {
         return $this->result;
     }
 
+    //You should be able to use the following methods the same way you would use them in nightmareJS, to which the
+    // documentation can be found here: https://github.com/Segmentio/nightmare
 
     public function config($config)
     {
