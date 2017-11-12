@@ -10,5 +10,11 @@
         "psr-4": {
             "shinoshi\\nightmarePHP\\": "src/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "npm install nightmare",
+            "sudo npm install -g electron --unsafe-perm=true --allow-root"
+        ]
     }
 }
