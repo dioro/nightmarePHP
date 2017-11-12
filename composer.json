@@ -16,5 +16,6 @@
             "npm install nightmare",
             "sudo npm install -g electron --unsafe-perm=true --allow-root"
         ]
-    }
+    },
+    "minimum-stability": "alpha"
 }
