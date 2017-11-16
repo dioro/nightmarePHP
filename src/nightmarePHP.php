@@ -3,6 +3,8 @@
 namespace shinoshi\nightmarePHP;
 
 
+use ReflectionClass;
+
 class nightmarePHP
 {
     private $tempname;
@@ -39,8 +41,10 @@ class nightmarePHP
      */
     public function run()
     {
+        $ref = new ReflectionClass(get_class($this));
+
         // creating temp file and storing nightmareJS code in it
-        $this->tempname = tempnam("../", "jej");
+        $this->tempname = tempnam(preg_replace('/(.*)\/\w+\/\w+\..*$/i',"$1" ,$ref->getFileName()), "jej");
         $temp = fopen($this->tempname, "r+");
         fwrite($temp, $this->nodeCode);
 
