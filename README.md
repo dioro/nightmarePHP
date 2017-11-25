@@ -1,6 +1,6 @@
 # NightmarePHP
 
-PHP package for [NightmareJS](http://www.nightmarejs.org/)
+PHP wrapper for [NightmareJS](http://www.nightmarejs.org/)
 
 ## Usage
 
