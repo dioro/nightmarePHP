@@ -1,5 +1,4 @@
 # NightmarePHP
----
 
 PHP package for [NightmareJS](http://www.nightmarejs.org/)
 
