@@ -6,6 +6,8 @@ PHP wrapper for [NightmareJS](http://www.nightmarejs.org/)
 
 Raw option (recommended):
 
+    use shinoshi\nightmarePHP\nightmarePHP;
+    
     $nightmare = new nightmarePHP();
     
     $nightmare->rawInput("
@@ -24,6 +26,8 @@ Raw option (recommended):
     var_dump($nightmare->getResult()); #returns latest title of the /r/news subreddit
     
 Predefined method option:
+
+    use shinoshi\nightmarePHP\nightmarePHP;
 
     $nightmare = new nightmarePHP();
 
