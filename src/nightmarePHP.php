@@ -47,6 +47,8 @@ class nightmarePHP
         $this->tempname = tempnam(preg_replace('/(.*)\/\w+\/\w+\..*$/i',"$1" ,$ref->getFileName()), "jej");
         $temp = fopen($this->tempname, "r+");
         fwrite($temp, $this->nodeCode);
+        fclose($temp);
+
 
         // execution of code
         exec("xvfb-run node " . $this->tempname, $output);
@@ -57,7 +59,6 @@ class nightmarePHP
         //dump(fread($temp, 1024));
 
         // cleanup
-        fclose($temp);
         unlink($this->tempname);
 
         $this->result = $output;

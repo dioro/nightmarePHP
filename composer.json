@@ -13,7 +13,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "npm install nightmare",
+            "npm install nightmare --no-bin-links",
             "sudo npm install -g electron --unsafe-perm=true --allow-root"
         ]
     },
