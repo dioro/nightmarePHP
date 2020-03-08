@@ -6,7 +6,7 @@ PHP wrapper for [NightmareJS](http://www.nightmarejs.org/)
 
 Raw option (recommended):
 
-    use shinoshi\nightmarePHP\nightmarePHP;
+    use dioro\nightmarePHP\nightmarePHP;
     
     $nightmare = new nightmarePHP();
     
@@ -27,7 +27,7 @@ Raw option (recommended):
     
 Predefined method option:
 
-    use shinoshi\nightmarePHP\nightmarePHP;
+    use dioro\nightmarePHP\nightmarePHP;
 
     $nightmare = new nightmarePHP();
 
